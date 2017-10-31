@@ -1,0 +1,63 @@
+<?php
+
+
+
+
+function tofratest_scripts() {
+
+	wp_enqueue_style( 'tofratest-bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css' );
+	wp_enqueue_style( 'tofratest-style', get_stylesheet_uri() );
+
+	wp_enqueue_script( 'tofratest-jquery', get_template_directory_uri() . '/js/jquery-slim.min.js','','', TRUE  );
+	wp_enqueue_script( 'tofratest-popper', get_template_directory_uri() . '/js/popper.min.js','','', TRUE  );
+	wp_enqueue_script( 'tofratest-bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js','','', TRUE  );
+
+	//wp_enqueue_script( 'tofraboot-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+
+	//wp_enqueue_script( 'tofraboot-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
+
+	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+		wp_enqueue_script( 'comment-reply' );
+	}
+}
+add_action( 'wp_enqueue_scripts', 'tofratest_scripts' );
+
+
+/**
+ * Disabling the Admin bar.
+ */
+//add_filter('show_admin_bar', '__return_false');
+
+
+add_theme_support('menus');
+
+function register_tofraboot_menus() {
+	register_nav_menus(
+		array(
+			'header-menu' => __( 'Header Menu' )
+		)
+	);
+}
+
+add_action('init', 'register_tofraboot_menus');
+
+// Register Custom Navigation Walker
+require_once get_template_directory() . '/wp-bootstrap-navwalker.php';
+
+function create_tofra_widget($name, $id, $description) {
+
+	register_sidebar( array(
+		'name' => __( $name ),
+		'id' => $id,
+		'description' => __( $description ),
+		'before_widget' => '<div class="widget">',
+		'after_widget' => '</div>',
+		'before_title' => '<h3>',
+		'after_title' => '</h3><hr>'
+	)); 
+}
+
+create_tofra_widget( 'Front Page Left', 'front-left', 'Displays on the left of the homepage' );
+create_tofra_widget( 'Front Page Right', 'front-right', 'Displays on the right of the homepage' );
+create_tofra_widget( 'Front Page Middle', 'front-middle', 'Displays on the middle of the homepage' );
+create_tofra_widget( 'Page Sidebar', 'page', 'Displays on the page' );
