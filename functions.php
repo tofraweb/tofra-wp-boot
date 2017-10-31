@@ -3,7 +3,7 @@
 
 
 
-function tofratest_scripts() {
+function tofra_wp_boot_scripts() {
 
 	wp_enqueue_style( 'tofratest-bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css' );
 	wp_enqueue_style( 'tofratest-style', get_stylesheet_uri() );
@@ -20,7 +20,7 @@ function tofratest_scripts() {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
-add_action( 'wp_enqueue_scripts', 'tofratest_scripts' );
+add_action( 'wp_enqueue_scripts', 'tofra_wp_boot_scripts' );
 
 
 /**
@@ -30,8 +30,9 @@ add_action( 'wp_enqueue_scripts', 'tofratest_scripts' );
 
 
 add_theme_support('menus');
+add_theme_support('post-thumbnails');
 
-function register_tofraboot_menus() {
+function register_tofra_wp_boot_menus() {
 	register_nav_menus(
 		array(
 			'header-menu' => __( 'Header Menu' )
@@ -39,12 +40,12 @@ function register_tofraboot_menus() {
 	);
 }
 
-add_action('init', 'register_tofraboot_menus');
+add_action('init', 'register_tofra_wp_boot_menus');
 
 // Register Custom Navigation Walker
 require_once get_template_directory() . '/wp-bootstrap-navwalker.php';
 
-function create_tofra_widget($name, $id, $description) {
+function create_tofra_wp_boot_widget($name, $id, $description) {
 
 	register_sidebar( array(
 		'name' => __( $name ),
@@ -57,7 +58,9 @@ function create_tofra_widget($name, $id, $description) {
 	)); 
 }
 
-create_tofra_widget( 'Front Page Left', 'front-left', 'Displays on the left of the homepage' );
-create_tofra_widget( 'Front Page Right', 'front-right', 'Displays on the right of the homepage' );
-create_tofra_widget( 'Front Page Middle', 'front-middle', 'Displays on the middle of the homepage' );
-create_tofra_widget( 'Page Sidebar', 'page', 'Displays on the page' );
+create_tofra_wp_boot_widget( 'Front Page Left', 'front-left', 'Displays on the left of the homepage' );
+create_tofra_wp_boot_widget( 'Front Page Right', 'front-right', 'Displays on the right of the homepage' );
+create_tofra_wp_boot_widget( 'Front Page Middle', 'front-middle', 'Displays on the middle of the homepage' );
+
+create_tofra_wp_boot_widget( 'Page Sidebar', 'page', 'Displays on the page' );
+create_tofra_wp_boot_widget( 'Blog Sidebar', 'blog', 'Displays on the blog' );
