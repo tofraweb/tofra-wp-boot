@@ -16,8 +16,13 @@ body {
   padding-top: 3.5rem;
 }
 
+a {
+	color: #818182;
+}
+
 .row {
 	margin-top: 40px;
+	margin-bottom: 20px;
 }
 
 .sidebar h3 {
@@ -37,6 +42,34 @@ body {
 	margin: 20px 0 40px;
 }
 
+/*images*/
+
+
+@media (max-width:540px) {
+	.portfolio-piece h5 {
+		font-size: .8em;
+	}
+
+}
+
+@media (max-width:840px) {
+	.portfolio-piece h5 {
+		font-size: 1.0em;
+	}
+
+}
+
+.featured-image img,
+.portfolio-piece img,
+.portfolio-image img {
+	max-width: 100%;
+}
+
+.prev-next {
+	font-size: 30px;
+	margin-top: 30px;
+	text-align: center;
+}
 
 
 

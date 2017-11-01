@@ -7,6 +7,7 @@ function tofra_wp_boot_scripts() {
 
 	wp_enqueue_style( 'tofratest-bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css' );
 	wp_enqueue_style( 'tofratest-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'tofratest-font-awesome', get_template_directory_uri() . '/font-awesome/css/font-awesome.css' );
 
 	wp_enqueue_script( 'tofratest-jquery', get_template_directory_uri() . '/js/jquery-slim.min.js','','', TRUE  );
 	wp_enqueue_script( 'tofratest-popper', get_template_directory_uri() . '/js/popper.min.js','','', TRUE  );
