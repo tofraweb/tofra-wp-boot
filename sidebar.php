@@ -1,6 +1,6 @@
 
 
-<div class="col-md-3 sidebar">
+<div class="col-md-3 sidebar sidebar-offcanvas">
 
    <?php if( ! dynamic_sidebar( 'page' ) ) : ?>
 
